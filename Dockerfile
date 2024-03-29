@@ -1,8 +1,10 @@
 # Use an official Nginx image as the base image
 FROM nginx:alpine
 
-# Copy the entire src directory to the container
-COPY ./src/ /usr/share/nginx/html/
+# # Copy files to the container
+# COPY index.html /usr/share/nginx/html
+# COPY script.js /usr/share/nginx/html
+# COPY index.html /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80

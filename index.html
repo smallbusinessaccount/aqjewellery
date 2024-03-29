@@ -9,7 +9,16 @@
       rel="stylesheet"
     />
     <script src="script.js" defer></script>
-    <title>Mauna Jewelry</title>
+    <title>AQ Jewellery</title>
+    <style>
+      /* Add styles for the gap between header and section */
+      html {
+        scroll-behavior: smooth;
+      }
+      section {
+        scroll-margin-top: 100px; /* Adjust this value according to your header height */
+      }
+    </style>
   </head>
   <!--Start of Tawk.to Script-->
   <script type="text/javascript">
@@ -29,7 +38,7 @@
   <body>
     <div id="content">
       <header>
-        <div class="logo">MAUNA JEWELERY</div>
+        <div id="top" class="logo">AQ JEWELLERY</div>
         <div class="menu-btn">
           <div class="btn-line"></div>
           <div class="btn-line"></div>
@@ -53,13 +62,13 @@
       <section id="welcome">
         <div class="welcome-content">
           <p class="tag-line">
-            Exquisite handcrafted jewelry for every occasion.
+            Exquisite handcrafted jewellery for every occasion.
           </p>
           <button class="cta-button">SHOP NOW</button>
         </div>
       </section>
 
-      <section class="section1-collections" id="section1-collections">
+      <section class="section1-collections" id="collections">
         <div class="responsive">
           <div class="gallery">
             <a target="_blank" href="images/ring.jpg">
@@ -164,39 +173,12 @@
       <section id="about">
         <div class="about-content">
           <h2>About Us</h2>
-          <p>
-            Reprehenderit officia enim labore est voluptate. Quis veniam sunt eu
-            ad commodo reprehenderit voluptate adipisicing. Duis nulla sint
-            irure aute tempor do eiusmod nisi minim dolore consectetur. Amet
-            cupidatat laboris consectetur amet velit minim voluptate magna do.
-            Cillum sunt eu ea duis deserunt incididunt aute id dolor eiusmod
-            nulla. Nostrud voluptate voluptate ut nostrud dolore. Eu
-            exercitation enim aliqua aliquip. Culpa dolor culpa ex ea occaecat
-            sit minim minim adipisicing enim minim esse veniam do. Qui deserunt
-            adipisicing occaecat sint dolor ea veniam. Excepteur eiusmod commodo
-            ea minim ipsum velit laboris aliquip nostrud commodo. Qui voluptate
-            commodo cillum commodo irure. Est esse culpa nostrud anim laborum
-            proident quis mollit voluptate mollit pariatur. Voluptate ad
-            excepteur sit minim ipsum officia esse quis eu veniam mollit nisi.
-            Reprehenderit ut laborum sit amet. Est fugiat incididunt ad magna
-            eiusmod laboris incididunt commodo eu ullamco ea aliqua. Proident
-            sint culpa velit laborum consectetur consectetur nulla officia eu
-            amet anim. Occaecat deserunt Lorem excepteur culpa commodo cillum
-            amet et. Id voluptate culpa nostrud dolore id duis quis consectetur
-            ex non adipisicing non qui veniam. Minim sit ipsum pariatur Lorem
-            cillum adipisicing labore. Incididunt ut culpa et culpa
-            reprehenderit do consectetur. Culpa exercitation in minim dolore
-            nulla nostrud reprehenderit eu dolore incididunt. Esse laborum
-            aliqua voluptate tempor sit Lorem ullamco exercitation id quis esse.
-            Aliquip Lorem do sunt dolor nulla reprehenderit velit mollit velit
-            nisi laborum. Anim reprehenderit eu elit eiusmod proident id
-            officia. Occaecat et velit minim esse enim in reprehenderit
-            consectetur ea velit ipsum Lorem ex officia. Sit ipsum culpa sunt
-            dolor sit eu ipsum adipisicing consectetur non. Dolore do nulla sunt
-            labore enim ipsum ipsum cupidatat culpa id. Nulla minim eiusmod nisi
-            cupidatat sint ex cillum cupidatat veniam adipisicing officia. Dolor
-            pariatur fugiat amet fugiat officia.
-          </p>
+          <p>Welcome to AQ Jewellery, your premier destination for exquisite handcrafted jewelry in Bahrain.</p>
+          <p>With over [X] years of unparalleled experience in the jewelry industry, we take pride in offering you a curated selection of stunning pieces that reflect elegance, craftsmanship, and timeless beauty.</p>
+          <p>At AQ Jewellery, we understand that every piece of jewelry tells a unique story. That's why we meticulously handcraft each item with precision and passion, ensuring that it not only captures your imagination but also becomes a cherished symbol of your most precious moments.</p>
+          <p>Our commitment to quality craftsmanship, exceptional design, and personalized service sets us apart. Whether you're searching for the perfect engagement ring, a meaningful gift, or a statement piece to elevate your style, our knowledgeable team is here to guide you every step of the way.</p>
+          <p>Located in the heart of Bahrain, we invite you to visit our showroom and experience the magic of AQ Jewellery firsthand. Let us help you find the perfect piece to celebrate life's most special occasions.</p>
+          <p>Thank you for choosing AQ Jewellery, where luxury meets tradition, and every moment shines.</p>
         </div>
       </section>
 
@@ -204,23 +186,35 @@
         <!-- Customer feedback section goes here -->
       </section>
 
-      <footer>
+      <footer id="contact">
         <div class="follow-us">
           <div class="follow-us-text">FOLLOW US</div>
           <div class="social-icons">
             <a href="#"><img src="images/facebook-48.png" alt="Facebook" /></a>
             <a href="#"><img src="images/tiktok-48.png" alt="TikTok" /></a>
-            <a href="#"
+            <a href="https://www.instagram.com/aqjewellery.bh/"
               ><img src="images/instagram-48.png" alt="Instagram"
             /></a>
           </div>
         </div>
         <div class="contact-form">
           CONTACT <br /><br />XX Street<br />Juffair <br />Bahrain<br />
-          <br />Email: info@maunajewelry.com<br />Phone: +973 111 111
+          <br />Email: info@aqjewellery.com<br />Phone: +973 111 111
         </div>
       </footer>
-      <div class="copyright">&copy; 2023 MAUNA JEWELRY</div>
+      <div class="copyright">&copy; 2024 AQ JEWELLERY</div>
     </div>
+    <script>
+      // Smooth scroll function
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+    </script>
   </body>
 </html>
