@@ -92,7 +92,7 @@ const Header = () => {
               </h1>
               
               {/* Vertical Marquee replacing tagline */}
-              <div className="h-8 overflow-hidden relative">
+              <div className="h-8 overflow-hidden relative flex justify-center lg:justify-start">
                 <div 
                   className="transition-transform duration-1000 ease-spring"
                   style={{
@@ -102,7 +102,7 @@ const Header = () => {
                   {marqueeTexts.map((text, index) => (
                     <p 
                       key={index}
-                      className="text-lg md:text-xl text-jewelry-purple-light font-light h-8 flex items-center"
+                      className="text-lg md:text-xl text-jewelry-purple-light font-light h-8 flex items-center justify-center lg:justify-start text-center lg:text-left"
                     >
                       {text}
                     </p>
@@ -110,10 +110,12 @@ const Header = () => {
                 </div>
               </div>
               
-              <p className="text-base text-white/70 max-w-xl leading-relaxed">
-                Experience the artistry of traditional jewelry making with contemporary designs in the heart of Bahrain
-              </p>
-              
+              <div className="h-8 overflow-hidden relative flex justify-center lg:justify-start">
+                <p className="text-base text-white/70 max-w-xl leading-relaxed text-center lg:text-left">
+                  Experience the artistry of traditional jewelry making with contemporary designs in the heart of Bahrain
+                </p>
+              </div>
+
               <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
                 <Button 
                   size="lg" 

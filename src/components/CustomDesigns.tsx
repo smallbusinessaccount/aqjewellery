@@ -1,5 +1,7 @@
+import { useChat } from './ChatContext';
 
 const CustomDesigns = () => {
+  const { openChat } = useChat();
   const designProcess = [
     {
       step: "01",
@@ -77,7 +79,7 @@ const CustomDesigns = () => {
         <div className="text-center mt-12">
           <div className="inline-flex items-center space-x-2 text-white">
             <span className="text-lg font-semibold">Ready to start your custom design?</span>
-            <button className="ml-4 px-6 py-3 glass-button text-white rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
+            <button onClick={openChat} className="ml-4 px-6 py-3 glass-button text-white rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
               Contact Us Today
             </button>
           </div>

@@ -8,9 +8,11 @@ import Testimonials from '@/components/Testimonials';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import WhatsAppChat from '@/components/WhatsAppChat';
+import { ChatProvider } from '@/components/ChatContext';
 
 const Index = () => {
   return (
+    <ChatProvider>
     <div className="min-h-screen">
       <Header />
       <About />
@@ -33,6 +35,7 @@ const Index = () => {
       </script>
       */}
     </div>
+    </ChatProvider>
   );
 };
 

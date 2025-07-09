@@ -12,7 +12,7 @@ const About = () => {
           </h2>
           
           <div className="grid md:grid-cols-2 gap-12 items-center mt-16">
-            <div className="space-y-6 text-left">
+            <div className="space-y-6 text-center md:text-left">
               <h3 className="text-2xl font-inter font-semibold lavender-accent mb-4">
                 Family Tradition Since Generations
               </h3>

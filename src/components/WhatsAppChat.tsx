@@ -1,10 +1,11 @@
 
 import { MessageCircle, X } from 'lucide-react';
 import { useState } from 'react';
+import { useChat } from './ChatContext'; 
 import { Button } from '@/components/ui/button';
 
 const WhatsAppChat = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, toggleChat } = useChat();
 
   const handleWhatsAppClick = () => {
     // TODO: Replace with actual WhatsApp Business number
@@ -19,7 +20,7 @@ const WhatsAppChat = () => {
       {/* WhatsApp floating button */}
       <div className="fixed bottom-6 right-6 z-50">
         <Button
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={toggleChat}
           className="w-14 h-14 rounded-full glass-button animate-glow-pulse"
         >
           {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
