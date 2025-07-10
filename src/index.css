@@ -204,3 +204,18 @@ a:focus-visible {
   outline: 2px solid hsl(var(--jewelry-lavender));
   outline-offset: 2px;
 }
+
+
+/* Prevent scrolling while interacting with model-viewer */
+model-viewer {
+  touch-action: none; /* Prevents touch scrolling */
+}
+
+model-viewer::part(canvas) {
+  touch-action: none;
+  user-select: none;
+}
+
+model-viewer:focus {
+  outline: none;
+}
