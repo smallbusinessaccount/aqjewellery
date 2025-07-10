@@ -16,29 +16,29 @@ const SignaturePieces: React.FC = () => {
   const pieces: SignaturePiece[] = [
     {
       id: 1,
-      title: "Pearl Elegance Collection",
-      description: "Lustrous pearls crafted into timeless designs",
+      title: "Diamond Heritage Ring",
+      description: "Exquisite diamond rings for special occasions",
       image: "/signature1.png",
       price: "Call us for pricing"
     },
     {
       id: 2,
-      title: "Diamond Heritage Ring",
-      description: "Exquisite diamond rings for special occasions",
+      title: "Gemstone Ring",
+      description: "Blue Sapphire with diamond ring in 18k White gold",
       image: "/signature2.jpg",
       price: "Call us for pricing"
     },
     {
       id: 3,
-      title: "Gold Statement Necklace",
-      description: "Bold gold designs that make a statement",
+      title: "Lab grown Diamond Collection",
+      description: "Tennis bracelet and Diamond Studs",
       image: "/signature3.png",
       price: "Call us for pricing"
     },
     {
       id: 4,
-      title: "Custom Gemstone Pieces",
-      description: "Personalized designs with precious gemstones",
+      title: "Pearl Elegance Collection",
+      description: "Lustrous Bahraini pearls crafted into timeless designs",
       image: "/signature4.png",
       price: "Call us for pricing"
     }

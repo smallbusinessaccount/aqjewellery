@@ -14,7 +14,7 @@ const ProductLines: React.FC = () => {
     {
       icon: <img src="/icons/pearls.png" alt="Precious Pearls Icon" className="w-10 h-10" />,
       title: "Precious Pearls",
-      description: "Cultured and natural pearls"
+      description: "Bahraini natural pearls"
     },
     {
       icon: <img src="/icons/diamond.png" alt="Diamond Collection Icon" className="w-10 h-10" />,
@@ -24,7 +24,7 @@ const ProductLines: React.FC = () => {
     {
       icon: <img src="/icons/gold.png" alt="Gold Jewelry Icon" className="w-10 h-10" />,
       title: "Gold Jewelry",
-      description: "18K & 22K gold designs"
+      description: "18K & 21K gold designs"
     },
     {
       icon: <img src="/icons/gemstones.png" alt="Gemstones Icon" className="w-10 h-10" />,
