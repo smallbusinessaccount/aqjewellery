@@ -1,5 +1,5 @@
 
-import { Instagram, Phone, MapPin, Clock } from 'lucide-react';
+import { Instagram, Phone, MapPin, Clock, Mail } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -33,6 +33,14 @@ const Footer = () => {
                 className="w-10 h-10 glass-purple rounded-full flex items-center justify-center hover:soft-glow transition-all duration-200"
               >
                 <Instagram size={18} />
+              </button>
+              <button 
+                onClick={() => window.open('https://www.tiktok.com/@aqjewellery.bh', '_blank')}
+                className="w-10 h-10 glass-purple rounded-full flex items-center justify-center hover:soft-glow transition-all duration-200"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                </svg>
               </button>
             </div>
           </div>
@@ -85,6 +93,11 @@ const Footer = () => {
               <div className="flex items-center space-x-3 justify-center md:justify-start">
                 <Phone size={16} className="text-jewelry-lavender flex-shrink-0" />
                 <p className="text-white/70 text-sm">+973 3376 9393</p>
+              </div>
+
+              <div className="flex items-center space-x-3 justify-center md:justify-start">
+                <Mail size={16} className="text-jewelry-lavender flex-shrink-0" />
+                <p className="text-white/70 text-sm">info@aqjewellery.com</p>
               </div>
               
               <div className="flex items-start space-x-3 justify-center md:justify-start">

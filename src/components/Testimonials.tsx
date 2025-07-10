@@ -1,9 +1,19 @@
 
+import React from 'react';
 import { Star } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import ResponsiveSection from './common/ResponsiveSection';
+import SectionHeader from './common/SectionHeader';
 
-const Testimonials = () => {
-  const testimonials = [
+interface Testimonial {
+  name: string;
+  rating: number;
+  text: string;
+  location: string;
+}
+
+const Testimonials: React.FC = () => {
+  const testimonials: Testimonial[] = [
     {
       name: "Elzette Botha",
       rating: 5,
@@ -24,19 +34,23 @@ const Testimonials = () => {
     }
   ];
 
+  const handleGoogleReviewsClick = () => {
+    window.open('https://maps.app.goo.gl/nUVvNTtMWkskxVYy5', '_blank');
+  };
+
   return (
-    <section id="testimonials" className="py-20 bg-gradient-to-br from-jewelry-purple-darker via-background to-jewelry-indigo relative overflow-hidden">
-      <div className="absolute inset-0 radial-glow opacity-20"></div>
+    <ResponsiveSection 
+      id="testimonials" 
+      background="darker"
+      className="overflow-hidden"
+    >
+      <div className="absolute inset-0 radial-glow opacity-20" />
       
-      <div className="container mx-auto px-6 relative">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-light font-inter mb-8 text-white">
-            What Our Customers Say
-          </h2>
-          <p className="text-lg text-white/90 max-w-2xl mx-auto">
-            Hear from our valued customers about their experience with Abdul Qaiyum Jewellery
-          </p>
-        </div>
+      <div className="relative">
+        <SectionHeader 
+          title="What Our Customers Say"
+          subtitle="Hear from our valued customers about their experience with Abdul Qaiyum Jewellery"
+        />
 
         <div className="grid md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
@@ -77,14 +91,15 @@ const Testimonials = () => {
           <p className="text-white/80 mb-4">See more reviews on</p>
           <button 
             className="inline-flex items-center space-x-2 glass-button text-white px-6 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105"
-            onClick={() => window.open('https://maps.app.goo.gl/nUVvNTtMWkskxVYy5', '_blank')}
+            onClick={handleGoogleReviewsClick}
+            aria-label="View our Google Reviews"
           >
             <span>Google Reviews</span>
             <Star className="w-4 h-4 fill-current text-jewelry-lavender" />
           </button>
         </div>
       </div>
-    </section>
+    </ResponsiveSection>
   );
 };
 

@@ -135,15 +135,15 @@ const Header = () => {
               </div>
             </div>
             
-            {/* Right side - Hero image */}
+            {/* Right side - Hero image with contained float animation */}
             <div className="relative animate-fade-in-up" style={{animationDelay: '0.3s'}}>
-              <div className="aspect-square max-w-md mx-auto relative">
+              <div className="aspect-square max-w-md mx-auto relative py-5">
                 {/* TODO: Replace with actual person wearing jewelry image with transparent background */}
-                <div className="w-full h-full rounded-3xl overflow-hidden soft-glow">
+                <div className="w-full h-full rounded-3xl overflow-hidden soft-glow animate-float">
                   <img 
                     src="/model.jpg" 
                     alt="Person wearing elegant jewelry"
-                    className="w-full h-full object-cover animate-float"
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 

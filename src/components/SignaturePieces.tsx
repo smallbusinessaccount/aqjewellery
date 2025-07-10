@@ -1,8 +1,19 @@
 
+import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
+import ResponsiveSection from './common/ResponsiveSection';
+import SectionHeader from './common/SectionHeader';
 
-const SignaturePieces = () => {
-  const pieces = [
+interface SignaturePiece {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  price: string;
+}
+
+const SignaturePieces: React.FC = () => {
+  const pieces: SignaturePiece[] = [
     {
       id: 1,
       title: "Pearl Elegance Collection",
@@ -34,19 +45,19 @@ const SignaturePieces = () => {
   ];
 
   return (
-    <section id="signature-pieces" className="py-20 bg-gradient-to-br from-jewelry-purple-darker via-background to-jewelry-indigo relative overflow-hidden">
+    <ResponsiveSection 
+      id="signature-pieces" 
+      background="darker"
+      className="overflow-hidden"
+    >
       {/* Background effects */}
-      <div className="absolute inset-0 radial-glow opacity-20"></div>
+      <div className="absolute inset-0 radial-glow opacity-20" />
       
-      <div className="container mx-auto px-6 relative">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-light font-inter mb-8 text-white">
-            Signature Pieces
-          </h2>
-          <p className="text-lg text-white/90 max-w-2xl mx-auto">
-            Discover our most coveted collections, each piece meticulously crafted to perfection
-          </p>
-        </div>
+      <div className="relative">
+        <SectionHeader 
+          title="Signature Pieces"
+          subtitle="Discover our most coveted collections, each piece meticulously crafted to perfection"
+        />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {pieces.map((piece, index) => (
@@ -79,7 +90,7 @@ const SignaturePieces = () => {
           ))}
         </div>
       </div>
-    </section>
+    </ResponsiveSection>
   );
 };
 
