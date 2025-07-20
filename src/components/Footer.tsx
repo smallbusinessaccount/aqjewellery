@@ -1,5 +1,6 @@
 
 import { Instagram, Phone, MapPin, Clock, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -67,12 +68,12 @@ const Footer = () => {
               >
                 Custom Designs
               </button>
-              <button 
-                onClick={() => window.location.href = '/conversions'}
+              <Link 
+                to="/conversions"
                 className="block text-white/70 hover:text-white transition-colors duration-200 text-sm mx-auto md:mx-0"
               >
                 Conversions
-              </button>
+              </Link>
               <button 
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                 className="block text-white/70 hover:text-white transition-colors duration-200 text-sm mx-auto md:mx-0"
