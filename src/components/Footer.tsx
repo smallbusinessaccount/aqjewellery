@@ -74,6 +74,12 @@ const Footer = () => {
               >
                 Conversions
               </Link>
+              <Link 
+                to="/live-price"
+                className="block text-white/70 hover:text-white transition-colors duration-200 text-sm mx-auto md:mx-0"
+              >
+                Live Market Price
+              </Link>
               <button 
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                 className="block text-white/70 hover:text-white transition-colors duration-200 text-sm mx-auto md:mx-0"
