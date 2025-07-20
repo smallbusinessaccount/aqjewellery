@@ -68,6 +68,12 @@ const Footer = () => {
                 Custom Designs
               </button>
               <button 
+                onClick={() => window.location.href = '/conversions'}
+                className="block text-white/70 hover:text-white transition-colors duration-200 text-sm mx-auto md:mx-0"
+              >
+                Conversions
+              </button>
+              <button 
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                 className="block text-white/70 hover:text-white transition-colors duration-200 text-sm mx-auto md:mx-0"
               >
