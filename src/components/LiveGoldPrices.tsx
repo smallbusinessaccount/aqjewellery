@@ -86,7 +86,7 @@ const LivePrice = () => {
   useEffect(() => {
     fetchPriceData();
     // Refresh every 30 seconds
-    const interval = setInterval(fetchPriceData, 30000);
+    const interval = setInterval(fetchPriceData, 3600000);
     return () => clearInterval(interval);
   }, []);
 
@@ -200,13 +200,6 @@ const LivePrice = () => {
       <div className="container mx-auto px-6 py-12">
         {/* Header */}
         <div className="mb-8">
-          <Link 
-            to="/" 
-            className="inline-flex items-center space-x-2 text-white/70 hover:text-white transition-colors duration-200 mb-6"
-          >
-            <ArrowLeft size={20} />
-            <span>Back to Home</span>
-          </Link>
           
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">

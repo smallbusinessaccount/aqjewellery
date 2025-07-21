@@ -7,6 +7,7 @@ import ProductLines from '@/components/ProductLines';
 import OurServices from '@/components/OurServices';
 import CustomDesigns from '@/components/CustomDesigns';
 import Testimonials from '@/components/Testimonials';
+import LiveGoldPrices from '@/components/LiveGoldPrices';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import WhatsAppChat from '@/components/WhatsAppChat';
@@ -24,6 +25,7 @@ const Index = () => {
       <OurServices />
       <CustomDesigns />
       <Testimonials />
+      <LiveGoldPrices />
       <Contact />
       <Footer />
       <WhatsAppChat />
