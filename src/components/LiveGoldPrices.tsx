@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Clock, TrendingUp, RefreshCcw, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import SectionHeader from './common/SectionHeader';
 
 interface GoldPriceData {
   ask: number;
@@ -108,8 +109,8 @@ const LivePrice = () => {
     const bhdPrice = usdPrice * 0.377;
     
     // Apply 1% price bump
-    const usdPriceWithBump = usdPrice * 1.01;
-    const bhdPriceWithBump = bhdPrice * 1.01;
+    const usdPriceWithBump = usdPrice * 1;
+    const bhdPriceWithBump = bhdPrice * 1;
     
     return {
       usd: usdPriceWithBump.toFixed(2),
@@ -158,13 +159,13 @@ const LivePrice = () => {
   };
 
   const priceItems = [
-    { label: '24Karats / kg', weight: 1000, karat: 100 },
-    { label: '24Karats / oz', weight: 31.1035, karat: 100 },
-    { label: '24Karats / tola', weight: 11.664, karat: 100 },
-    { label: '24Karats / g', weight: 1, karat: 100 },
-    { label: '22Karats / g', weight: 1, karat: 91.67 },
-    { label: '21Karats / g', weight: 1, karat: 87.5 },
-    { label: '18Karats / g', weight: 1, karat: 75 },
+    { label: '24K / kg', weight: 1000, karat: 100 },
+    { label: '24K / oz', weight: 31.1035, karat: 100 },
+    { label: '24K / tola', weight: 11.664, karat: 100 },
+    { label: '24K / g', weight: 1, karat: 100 },
+    { label: '22K / g', weight: 1, karat: 91.67 },
+    { label: '21K / g', weight: 1, karat: 87.5 },
+    { label: '18K / g', weight: 1, karat: 75 },
   ];
 
   if (loading && !priceData) {
@@ -202,9 +203,10 @@ const LivePrice = () => {
         <div className="mb-8">
           
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Live Gold Prices
-            </h1>
+            <SectionHeader 
+              title="Live Gold Prices"
+              subtitle="Check the latest gold prices in BHD and USD"
+            />
             
             {priceData && (
               <div className="flex items-center justify-center space-x-4 text-sm text-white/70">
@@ -252,7 +254,7 @@ const LivePrice = () => {
                       <CardTitle className="text-sm font-medium text-white/90 tracking-wide flex flex-col gap-1">
                         <div className="flex items-center gap-2 whitespace-nowrap">
                           {/* Display Label (e.g., "24Karats") */}
-                          <span>{item.label.split('/')[0].trim()}</span>
+                          <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>{item.label.split('/')[0].trim()}</span>
 
                           {/* Unit badge (e.g., "kg") */}
                           <span className="text-xs px-2 py-0.5 rounded-full bg-yellow-500/20 text-yellow-200 border border-yellow-300/30">
