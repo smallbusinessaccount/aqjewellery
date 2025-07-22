@@ -278,19 +278,6 @@ const LivePrice = () => {
                           </span>
                         </div>
                       </div>
-                      
-                      {/* BHD Price */}
-                      <div className="flex items-baseline justify-between">
-                        <span className="text-xs font-medium text-amber-300 uppercase tracking-wide">BHD</span>
-                        <div className="text-right">
-                          <span className="text-2xl font-bold text-amber-300">
-                            {bhdFormatted.whole}
-                          </span>
-                          <span className="text-sm font-medium text-amber-300 align-super">
-                            .{bhdFormatted.decimal}
-                          </span>
-                        </div>
-                      </div>
                     </CardContent>
                   </div>
                 </Card>
