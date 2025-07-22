@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Clock, TrendingUp, RefreshCcw, ArrowLeft } from 'lucide-react';
+import { Clock, TrendingUp, RefreshCcw, ArrowLeft, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import SectionHeader from './common/SectionHeader';
@@ -33,15 +33,15 @@ const GoldPurityBar = ({ karat }: { karat: number }) => {
 
   return (
     <div className="w-full">
-      <div className="flex justify-between text-[10px] text-yellow-100/80 font-medium mb-1">
-        <span>Purity</span>
-        <span>{karat.toFixed(2)}%</span>
-      </div>
-      <div className="w-full h-2 rounded-full bg-yellow-100/20 overflow-hidden">
+      <div className="w-full h-3 rounded-full bg-yellow-100/20 overflow-hidden relative">
         <div
           className="h-full rounded-full"
           style={{ width: `${karat}%`, backgroundColor: fillColor }}
         />
+        <div className="absolute inset-0 flex items-center left-2">
+          <Sparkles className="w-3 h-3 text-gray-900 mr-1" />
+          <span className="text-[10px] text-gray-900 font-medium">{karat.toFixed(2)}%</span>
+        </div>
       </div>
     </div>
   );
@@ -159,10 +159,10 @@ const LivePrice = () => {
   };
 
   const priceItems = [
-    { label: '24K / kg', weight: 1000, karat: 100 },
-    { label: '24K / oz', weight: 31.1035, karat: 100 },
-    { label: '24K / tola', weight: 11.664, karat: 100 },
     { label: '24K / g', weight: 1, karat: 100 },
+    { label: '24K / tola', weight: 11.664, karat: 100 },
+    { label: '24K / oz', weight: 31.1035, karat: 100 },
+    { label: '24K / kg', weight: 1000, karat: 100 },
     { label: '22K / g', weight: 1, karat: 91.67 },
     { label: '21K / g', weight: 1, karat: 87.5 },
     { label: '18K / g', weight: 1, karat: 75 },
@@ -231,7 +231,7 @@ const LivePrice = () => {
 
         {/* Price Grid */}
         {priceData && (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {priceItems.map((item, index) => {
               const prices = calculatePrice(priceData.quotes[0].ask, item.weight, item.karat);
               const usdFormatted = formatPrice(prices.usd);
@@ -247,38 +247,43 @@ const LivePrice = () => {
                     <div className="w-full h-full rounded-bl-xl bg-[radial-gradient(circle_at_top_right,_rgba(255,215,0,0.12)_0%,_transparent_70%)] blur-sm" />
                   </div>
 
+                  {/* Live indicator - top right */}
+                  <div className="absolute top-3 right-3 z-20">
+                    <div className="relative">
+                      <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                      <div className="absolute inset-0 w-3 h-3 bg-green-500 rounded-full animate-ping opacity-75"></div>
+                    </div>
+                  </div>
+
                   {/* Content block */}
-                  <div className="relative z-10">
-                    
-                    <CardHeader className="pb-4 pt-8 relative z-10">
-                      <CardTitle className="text-sm font-medium text-white/90 tracking-wide flex flex-col gap-1">
-                        <div className="flex items-center gap-2 whitespace-nowrap">
-                          {/* Display Label (e.g., "24Karats") */}
-                          <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>{item.label.split('/')[0].trim()}</span>
+                  <div className="relative z-10 p-4 h-full flex flex-col">
+                    {/* Label at top-left */}
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="text-xs font-medium text-white/90 tracking-wide" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
+                        {item.label.split('/')[0].trim()}
+                      </span>
+                      <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-yellow-500/20 text-yellow-200 border border-yellow-300/30">
+                        {item.label.split('/')[1]?.trim()}
+                      </span>
+                    </div>
 
-                          {/* Unit badge (e.g., "kg") */}
-                          <span className="text-xs px-2 py-0.5 rounded-full bg-yellow-500/20 text-yellow-200 border border-yellow-300/30">
-                            {item.label.split('/')[1]?.trim()}
-                          </span>
-                        </div>
-
-                        <GoldPurityBar karat={item.karat} />
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      {/* USD Price */}
-                      <div className="flex items-baseline justify-between">
-                        <span className="text-xs font-medium text-sky-100 uppercase tracking-wide">USD</span>
-                        <div className="text-right">
-                          <span className="text-2xl font-bold text-white/90">
-                            {usdFormatted.whole}
-                          </span>
-                          <span className="text-sm font-medium text-sky-100 align-super">
+                    {/* Jumbo Centered Price - dominant focal point */}
+                    <div className="flex-1 flex items-center justify-center py-4">
+                      <div className="text-center px-4">
+                        <div className="text-[10px] font-medium text-sky-100/60 uppercase tracking-wider mb-1">USD</div>
+                        <div className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-none">
+                          {usdFormatted.whole}
+                          <span className="text-xl sm:text-2xl md:text-3xl font-bold text-sky-100/80 align-super">
                             .{usdFormatted.decimal}
                           </span>
                         </div>
                       </div>
-                    </CardContent>
+                    </div>
+
+                    {/* Purity bar at bottom */}
+                    <div className="mt-auto">
+                      <GoldPurityBar karat={item.karat} />
+                    </div>
                   </div>
                 </Card>
               );
