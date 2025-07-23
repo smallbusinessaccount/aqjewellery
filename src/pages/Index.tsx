@@ -22,10 +22,10 @@ const Index = () => {
       <WhyChooseUs />
       <SignaturePieces />
       <ProductLines />
+      <LiveGoldPrices />
       <OurServices />
       <CustomDesigns />
       <Testimonials />
-      <LiveGoldPrices />
       <Contact />
       <Footer />
       <WhatsAppChat />
