@@ -27,20 +27,23 @@ const purityLevels = [
   { label: "18k", percent: 75 },
 ];
 
-const GoldPurityBar = ({ karat }: { karat: number }) => {
+const GoldPurityBar = ({ karat, label }: { karat: number; label: string }) => {
   const fillColor =
     karat >= 95 ? '#FFD700' : karat >= 85 ? '#FFC107' : karat >= 75 ? '#FFB300' : '#DAA520';
 
   return (
     <div className="w-full">
-      <div className="w-full h-3 rounded-full bg-yellow-100/20 overflow-hidden relative">
+      <div className="w-full h-5 rounded-full bg-yellow-100/20 overflow-hidden relative">
         <div
           className="h-full rounded-full"
           style={{ width: `${karat}%`, backgroundColor: fillColor }}
         />
-        <div className="absolute inset-0 flex items-center left-2">
-          <Sparkles className="w-3 h-3 text-gray-900 mr-1" />
-          <span className="text-[10px] text-gray-900 font-medium">{karat.toFixed(2)}%</span>
+        <div className="absolute inset-0 flex items-center justify-center px-2 py-1 text-[10px] font-medium" style={{ color: '#4b3621' }}>
+          <span className="mr-1">{label}</span>
+          <Sparkles className="w-3 h-3 mr-1" style={{ color: '#4b3621' }} />
+          <span>
+            {Number(karat) % 1 === 0 ? Number(karat) : Number(karat).toPrecision(3)}%
+          </span>
         </div>
       </div>
     </div>
@@ -142,22 +145,6 @@ const LivePrice = () => {
     }
   };
 
-  const GoldBars = ({ unit }: { unit: string }) => {
-    const filledCount = getBarCount(unit);
-    return (
-      <div className="flex items-center gap-1 ml-2">
-        {Array.from({ length: 4 }).map((_, i) => (
-          <div
-            key={i}
-            className={`w-2 h-3 rounded-sm border border-yellow-400 ${
-              i < filledCount ? 'bg-yellow-400' : 'bg-transparent'
-            }`}
-          />
-        ))}
-      </div>
-    );
-  };
-
   const priceItems = [
     { label: '24K / g', weight: 1, karat: 100 },
     { label: '24K / tola', weight: 11.664, karat: 100 },
@@ -205,7 +192,7 @@ const LivePrice = () => {
           <div className="text-center mb-12">
             <SectionHeader 
               title="Live Gold Prices"
-              subtitle="Check the latest gold prices in BHD and USD"
+              subtitle="Check the latest gold prices in USD"
             />
             
             {priceData && (
@@ -259,19 +246,21 @@ const LivePrice = () => {
                   <div className="relative z-10 p-4 h-full flex flex-col">
                     {/* Label at top-left */}
                     <div className="flex items-center gap-2 mb-3">
-                      <span className="text-xs font-medium text-white/90 tracking-wide" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 300 }}>
-                        {item.label.split('/')[0].trim()}
-                      </span>
                       <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-yellow-500/20 text-yellow-200 border border-yellow-300/30">
                         {item.label.split('/')[1]?.trim()}
                       </span>
+                      <div className="flex-1">
+                        <GoldPurityBar
+                          karat={item.karat}
+                          label={item.label.split('/')[0].trim()} // This will be "24K", etc
+                        />
+                      </div>
                     </div>
 
                     {/* Jumbo Centered Price - dominant focal point */}
-                    <div className="flex-1 flex items-center justify-center py-4">
-                      <div className="text-center px-4">
-                        <div className="text-[10px] font-medium text-sky-100/60 uppercase tracking-wider mb-1">USD</div>
-                        <div className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-none">
+                    <div className="grow flex justify-center">
+                      <div className="text-center px-4 my-auto mb-3">
+                        <div className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight">
                           {usdFormatted.whole}
                           <span className="text-xl sm:text-2xl md:text-3xl font-bold text-sky-100/80 align-super">
                             .{usdFormatted.decimal}
@@ -280,10 +269,10 @@ const LivePrice = () => {
                       </div>
                     </div>
 
-                    {/* Purity bar at bottom */}
+                    {/* Purity bar at bottom 
                     <div className="mt-auto">
                       <GoldPurityBar karat={item.karat} />
-                    </div>
+                    </div>*/}
                   </div>
                 </Card>
               );
