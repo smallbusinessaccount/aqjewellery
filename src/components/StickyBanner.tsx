@@ -1,16 +1,24 @@
 import { useEffect, useRef, useState } from 'react';
-import { X } from 'lucide-react';
+import { Sparkles, X } from 'lucide-react';
 
 interface BannerConfig {
   id: string;
   enabled: boolean;
   message: string;
+  /** ISO date (YYYY-MM-DD). Banner stops showing after the end of this day. */
+  expiresAt?: string;
 }
 
-const dismissedKey = (id: string) => `banner-dismissed-${id}`;
+const isExpired = (expiresAt?: string) => {
+  if (!expiresAt) return false;
+  const expiry = new Date(`${expiresAt}T23:59:59`);
+  return Date.now() > expiry.getTime();
+};
 
 const StickyBanner = () => {
   const [config, setConfig] = useState<BannerConfig | null>(null);
+  // Resets on every page load by design — dismissing only hides it for the
+  // current visit, not permanently.
   const [dismissed, setDismissed] = useState(false);
   const barRef = useRef<HTMLDivElement>(null);
 
@@ -18,8 +26,7 @@ const StickyBanner = () => {
     fetch('/banner.json')
       .then((res) => (res.ok ? res.json() : null))
       .then((data: BannerConfig | null) => {
-        if (data && data.enabled && data.id) {
-          setDismissed(localStorage.getItem(dismissedKey(data.id)) === 'true');
+        if (data && data.enabled && data.id && !isExpired(data.expiresAt)) {
           setConfig(data);
         }
       })
@@ -52,17 +59,33 @@ const StickyBanner = () => {
 
   const handleDismiss = () => {
     document.documentElement.style.setProperty('--banner-height', '0px');
-    localStorage.setItem(dismissedKey(config.id), 'true');
     setDismissed(true);
   };
 
   return (
     <div
       ref={barRef}
-      className="glass-purple sticky top-0 z-[60] w-full"
+      className="glass-dark animate-banner-in relative sticky top-0 z-[60] w-full overflow-hidden"
     >
-      <div className="container mx-auto flex items-center justify-center gap-4 px-6 py-3">
-        <p className="text-center text-sm text-white">{config.message}</p>
+      <div className="container mx-auto flex items-center gap-4 px-6 py-3">
+        <div className="min-w-0 flex-1 overflow-hidden">
+          <div className="animate-marquee flex w-max items-center gap-16 whitespace-nowrap">
+            {[0, 1].map((i) => (
+              <span
+                key={i}
+                className="flex items-center gap-2 text-sm text-white"
+                aria-hidden={i === 1 ? true : undefined}
+              >
+                <Sparkles
+                  size={14}
+                  className="animate-twinkle flex-shrink-0 text-jewelry-lavender"
+                  aria-hidden="true"
+                />
+                {config.message}
+              </span>
+            ))}
+          </div>
+        </div>
         <button
           onClick={handleDismiss}
           aria-label="Dismiss announcement"
