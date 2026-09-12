@@ -1,6 +1,7 @@
 
-import { Instagram, Phone, MapPin, Clock, Mail } from 'lucide-react';
+import { Phone, MapPin, Clock, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import InstagramIcon from '@/components/common/InstagramIcon';
 
 const Footer = () => {
   return (
@@ -33,7 +34,7 @@ const Footer = () => {
                 onClick={() => window.open('https://www.instagram.com/aqjewellery.bh', '_blank')}
                 className="w-10 h-10 glass-purple rounded-full flex items-center justify-center hover:soft-glow transition-all duration-200"
               >
-                <Instagram size={18} />
+                <InstagramIcon size={18} />
               </button>
               <button 
                 onClick={() => window.open('https://www.tiktok.com/@aqjewellery.bh', '_blank')}

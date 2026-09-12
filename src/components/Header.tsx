@@ -1,7 +1,7 @@
 
-import { Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState, useEffect } from 'react';
+import InstagramIcon from '@/components/common/InstagramIcon';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,7 +43,7 @@ const Header = () => {
       </div>
 
       {/* Sticky Header with improved padding */}
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      <header className={`fixed left-0 right-0 top-[var(--banner-height,0px)] z-50 transition-all duration-300 ${
         isScrolled ? 'glass-purple header-compact' : 'bg-transparent header-full'
       }`}>
         <div className="container mx-auto px-6">
@@ -74,7 +74,7 @@ const Header = () => {
               className="glass-button text-white hover:text-jewelry-lavender"
               onClick={() => window.open('https://www.instagram.com/aqjewellery.bh', '_blank')}
             >
-              <Instagram size={24} />
+              <InstagramIcon size={24} />
             </Button>
           </div>
         </div>

@@ -24,6 +24,10 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
       "@typescript-eslint/no-unused-vars": "off",
+      // New in eslint-plugin-react-hooks v7: flags standard fetch-on-mount /
+      // useMemo-with-Math.random patterns already in use across this codebase.
+      "react-hooks/set-state-in-effect": "off",
+      "react-hooks/purity": "off",
     },
   }
 );
